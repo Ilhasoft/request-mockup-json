@@ -19,8 +19,11 @@ Your path is ```[JSON files path]/[Method]/[URL].json```
 [
     {
         "data": {},
-        "code": 200,
-        "content": "OK"
+        "response": {
+            "code": 200,
+            "content": "OK",
+            ...others
+        }
     }
 ]
 ```
@@ -47,7 +50,7 @@ var response = requestMockupJson.getResponse(
 
 
 // Get status code and content
-var status_code = reponse.code;
-var content = reponse.content;
+var status_code = response.code;
+var content = response.content;
 console.log(status_code, content);
 ```
