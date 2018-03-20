@@ -19,7 +19,7 @@ function getResponse(method, url, data, config, base_path) {
   mockup_content.forEach(function (mockup) {
     var mockup_data = utils.sortDict(mockup.data || {});
     if (JSON.stringify(data) === JSON.stringify(mockup_data)) {
-      out = mockup;
+      out = mockup.response;
     }
   });
   return out;
