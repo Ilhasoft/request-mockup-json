@@ -1,5 +1,8 @@
 [
     {
-        "content": "OK"
+        "response": {
+            "code": 200,
+            "content": "OK"
+        }
     }
 ]
