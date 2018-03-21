@@ -20,7 +20,7 @@ Your path is ```[JSON files path]/[Method]/[URL].json```
     {
         "data": {},
         "response": {
-            "code": 200,
+            "status": 200,
             "content": "OK",
             ...others
         }
@@ -28,14 +28,36 @@ Your path is ```[JSON files path]/[Method]/[URL].json```
 ]
 ```
 
-### Get response
+### Functions
+
+#### .getResponse()
+
+```requestMockupJson.create(method, path, data, config);```
+
+#### .create()
+
+```requestMockupJson.create(method, config);```
+
+### Config dict
+
+| Param | Type | Default | Description |
+|--|--|--|--|
+| mockupsPath | string | __basedir | Path to mockup files |
+| validateStatus | function | ```check the code``` | ```function (status) {}``` returns true to valid status and false to invalid status |
+
+## Examples
+
+### GET
+
 ```
 var requestMockupJson = require('request-mockup-json');
 
 // Create method function
 var get = requestMockupJson.create(
     'GET', // Method
-    'mockups' // JSON files Path
+    { // config dict
+        mockupsPath: 'mockups' // JSON files Path
+    }
 );
 var response = get('/test/');
 
@@ -44,13 +66,14 @@ var response = requestMockupJson.getResponse(
     'GET',
     '/test/',
     {}, // Data
-    {}, // Extra config
-    'mockups' // JSON files Path
+    { // config dict
+        mockupsPath: 'mockups' // JSON files Path
+    }
 );
 
 
 // Get status code and content
-var status_code = response.code;
+var status_code = response.status;
 var content = response.content;
 console.log(status_code, content);
 ```
