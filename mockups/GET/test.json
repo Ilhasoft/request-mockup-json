@@ -4,5 +4,14 @@
             "status": 200,
             "content": "OK"
         }
+    },
+    {
+        "headers": {
+            "Auth": "Token 123"
+        },
+        "response": {
+            "status": 200,
+            "content": "OK"
+        }
     }
 ]

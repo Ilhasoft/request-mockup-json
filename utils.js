@@ -6,6 +6,11 @@ function sortDict(dict) {
   return out;
 }
 
+function dictToComparableStr(dict) {
+  return JSON.stringify(sortDict(dict));
+}
+
 module.exports = {
   sortDict: sortDict,
+  dictToComparableStr: dictToComparableStr,
 };

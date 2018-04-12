@@ -26,4 +26,13 @@ describe('GET', function () {
       assert.equal(e.response.content, 'Internal Error');
     }
   });
+
+  it('with headers', function () {
+    var response = get('/test/', null, {
+      headers: {
+        Auth: 'Token 123',
+      }
+    });
+    assert.equal(response.status, 200);
+  });
 });

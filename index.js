@@ -23,9 +23,18 @@ function getResponse(method, url, _data, _config) {
   var mockup_content = JSON.parse(mockup_file_content);
   var out = null;
   mockup_content.forEach(function (mockup) {
-    var mockup_data = utils.sortDict(mockup.data || {});
-    if (JSON.stringify(utils.sortDict(data)) === JSON.stringify(mockup_data)) {
-      out = mockup.response;
+    var data_str = utils.dictToComparableStr(data);
+    var mockup_data_str = utils.dictToComparableStr(mockup.data || {});
+    if (data_str === mockup_data_str) {
+      if (config.headers || mockup.headers) {
+        var headers_str = utils.dictToComparableStr(config.headers || {});
+        var mockup_headers_str = utils.dictToComparableStr(mockup.headers || {});
+        if (headers_str === mockup_headers_str) {
+          out = mockup.response;  
+        }
+      } else {
+        out = mockup.response;
+      }
     }
   });
   if (out && out.status && !config.validateStatus(out.status)) {

@@ -44,6 +44,7 @@ Your path is ```[JSON files path]/[Method]/[URL].json```
 |--|--|--|--|
 | mockupsPath | string | __basedir | Path to mockup files |
 | validateStatus | function | ```check the code``` | ```function (status) {}``` returns true to valid status and false to invalid status |
+| headers | dictionary | undefined | Request headers |
 
 ## Examples
 
