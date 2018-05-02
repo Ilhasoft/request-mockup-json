@@ -27,12 +27,39 @@ describe('GET', function () {
     }
   });
 
-  it('with headers', function () {
-    var response = get('/test/', null, {
-      headers: {
-        Auth: 'Token 123',
-      }
+  describe('with headers', function () {
+    it('one', function () {
+      var response = get('/test/', null, {
+        headers: {
+          Auth: 'Token 123',
+        }
+      });
+      assert.equal(response.status, 200);
+      assert.equal(response.content, 'Access 123');
     });
-    assert.equal(response.status, 200);
+
+    it('two', function () {
+      var response = get('/test/', null, {
+        headers: {
+          Auth: 'Token 321',
+        }
+      });
+      assert.equal(response.status, 200);
+      assert.equal(response.content, 'Access 321');
+    });
+  });
+
+  describe('with query string', function () {
+    it('simple', function () {
+      var response = get('/test/?value=pop');
+      assert.equal(response.status, 200);
+      assert.equal(response.content, 'pop');
+    });
+
+    it('array', function () {
+      var response = get('/test/?names=douglas&names=ana');
+      assert.equal(response.status, 200);
+      assert.equal(response.content, 'douglas and ana');
+    });
   });
 });

@@ -11,7 +11,34 @@
         },
         "response": {
             "status": 200,
-            "content": "OK"
+            "content": "Access 123"
+        }
+    },
+    {
+        "headers": {
+            "Auth": "Token 321"
+        },
+        "response": {
+            "status": 200,
+            "content": "Access 321"
+        }
+    },
+    {
+        "query_string": {
+            "value": "pop"
+        },
+        "response": {
+            "status": 200,
+            "content": "pop"
+        }
+    },
+    {
+        "query_string": {
+            "names": ["douglas", "ana"]
+        },
+        "response": {
+            "status": 200,
+            "content": "douglas and ana"
         }
     }
 ]

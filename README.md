@@ -18,7 +18,9 @@ Your path is ```[JSON files path]/[Method]/[URL].json```
 ```
 [
     {
-        "data": {},
+        "query_string": {},  // Optional
+        "headers": {},  // Optional
+        "data": {},  // Optional
         "response": {
             "status": 200,
             "content": "OK",
